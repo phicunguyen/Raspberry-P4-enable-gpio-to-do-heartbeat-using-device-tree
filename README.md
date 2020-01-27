@@ -41,7 +41,7 @@ Let's call this heartbeat.dts
 
         sudo cp heartbeat.dtb /boot/overlays
         
-3. Add the "dtoverlay=heartbeat" add the end of your /boot/config.txt. (sudo vi /boot/config.txt) 
+3. Add the "dtoverlay=heartbeat" at the end of your /boot/config.txt. (sudo vi /boot/config.txt) 
 
         dtoverlay=heartbeat
         
@@ -49,20 +49,22 @@ Let's call this heartbeat.dts
       
         sudo reboot         
         
-5. Put a scope probe on your raspberry pi J8-29 (gpio5) AND J8-31 (gpio6). You should see a some activity on the pin.
+5. Put a scope probe on your raspberry pi J8-29 (gpio5) AND J8-31 (gpio6). You should see some activities on the pin.
 
-You should see MYLED0 and MYLED1 on /sys/class/leds after reboot the system.
+MYLED0 and MYLED1 is on /sys/class/leds after reboot the system.
 
         pi@raspberrypi:~/phi/dts $ ls /sys/class/leds/
         led0  led1  mmc0::  MYLED0  MYLED1
         
-You can stop the heartbeat echo none to trigger. since it's write protected yoou need to do sudo. 
+You can stop the heartbeat by echo none to trigger. since it's write protected yoou need to do sudo. 
 
     sudo sh -c "echo none > /sys/class/leds/MYLED0/trigger"
     
 You can start the heartbeat echo heartbeat to trigger.
 
     sudo sh -c "echo heartbeat > /sys/class/leds/MYLED0/trigger"   
+
+Same thing above can be done for MYLED1.
     
 There is an led called ACT, you see it blinking while the raspberry is bootup and stop after boot up is done.
 You can control the led from your raspberry pi after boot up is done
