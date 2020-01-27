@@ -51,3 +51,23 @@ Let's call this heartbeat.dts
         
 5. Put a scope probe on your raspberry pi J8-29 (gpio5) AND J8-31 (gpio6). You should see a some activity on the pin.
 
+You should see MYLED0 and MYLED1 on /sys/class/leds after reboot the system.
+
+        pi@raspberrypi:~/phi/dts $ ls /sys/class/leds/
+        led0  led1  mmc0::  MYLED0  MYLED1
+        
+You can stop the heartbeat echo none to trigger. since it's write protected yoou need to do sudo. 
+
+    sudo sh -c "echo none > /sys/class/leds/MYLED0/trigger"
+    
+You can start the heartbeat echo heartbeat to trigger.
+
+    sudo sh -c "echo heartbeat > /sys/class/leds/MYLED0/trigger"   
+    
+There is an led called ACT, you see it blinking while the raspberry is bootup and stop after boot up is done.
+You can control the led from your raspberry pi after boot up is done
+Run the command below on your raspberry pi to see the led blinking.
+    
+    sudo sh -c "echo heartbeat >/sys/class/leds/led0/trigger"						
+    
+Have fun.
