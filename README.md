@@ -56,18 +56,18 @@ MYLED0 and MYLED1 is on /sys/class/leds after reboot the system.
         pi@raspberrypi:~/phi/dts $ ls /sys/class/leds/
         led0  led1  mmc0::  MYLED0  MYLED1
         
-You can stop the heartbeat by echo none to trigger. since it's write protected yoou need to do sudo. 
+You can stop the heartbeat by echo none to trigger. since it's write protected you need to do sudo. 
 
     sudo sh -c "echo none > /sys/class/leds/MYLED0/trigger"
     
-You can start the heartbeat echo heartbeat to trigger.
+You can start the heartbeat again by echo heartbeat to trigger.
 
     sudo sh -c "echo heartbeat > /sys/class/leds/MYLED0/trigger"   
 
 Same thing above can be done for MYLED1.
     
 There is an led called ACT, you see it blinking while the raspberry is bootup and stop after boot up is done.
-You can control the led from your raspberry pi after boot up is done
+You can control the led from your raspberry pi after boot up is finish
 Run the command below on your raspberry pi to see the led blinking.
     
     sudo sh -c "echo heartbeat >/sys/class/leds/led0/trigger"						
